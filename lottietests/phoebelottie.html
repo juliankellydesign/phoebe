@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phoebe Lottie Test</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.12.2/lottie.min.js"></script>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+        #lottie-container {
+            width: 800px;
+            height: 800px;
+        }
+        .svg-wrapper {
+            width: 800px;
+            height: 800px;
+        }
+
+        .svg-wrapper svg{
+            filter: url(#displacementFilter);
+        }
+    </style>
+</head>
+<body>
+    <h1>Welcome to the Phoebe Lottie Animation Test</h1>
+    
+    <svg class="svg-wrapper">
+        <defs>
+            <filter id="displacementFilter">
+                <feTurbulence
+                    type="turbulence"
+                    baseFrequency="0.01"
+                    numOctaves="1"
+                    result="turbulence" />
+                <feDisplacementMap
+                    in2="turbulence"
+                    in="SourceGraphic"
+                    scale="15"
+                    xChannelSelector="R"
+                    yChannelSelector="G" />
+            </filter>
+        </defs>
+        <g filter="url(#displacementFilter)">
+            <foreignObject width="800" height="800">
+                <div id="lottie-container"></div>
+            </foreignObject>
+        </g>
+        
+    </svg>
+
+    <p>This is a simple HTML page.</p>
+
+    <script>
+        // Load the Lottie animation
+        lottie.loadAnimation({
+            container: document.getElementById('lottie-container'),
+            renderer: 'svg',
+            loop: true,
+            autoplay: true,
+            path: 'anim.json'
+        });
+    </script>
+</body>
+</html>
