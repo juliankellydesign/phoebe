@@ -28,9 +28,6 @@
             filter: url(#fractalNoiseFilter);
             will-change: transform;
         }
-        #flowerstroke {
-            stroke-dasharray: 10;
-        }
     </style>
 </head>
 <body>
@@ -38,7 +35,7 @@
     
     <svg class="svg-wrapper">
         <defs>
-            <filter id="displacementFilter">
+            <!-- <filter id="displacementFilter">
                 <feTurbulence
                     type="turbulence"
                     baseFrequency="0.01"
@@ -50,7 +47,7 @@
                     scale="5"
                     xChannelSelector="R"
                     yChannelSelector="G" />
-            </filter>
+            </filter> -->
             <filter id="fractalNoiseFilter">
                 <feTurbulence 
                     type="fractalNoise" 
@@ -89,7 +86,7 @@
             renderer: 'svg',
             loop: true,
             autoplay: true,
-            path: 'anim4.json'
+            path: 'anim5.json'
         });
 
         lottie.loadAnimation({
