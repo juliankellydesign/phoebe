@@ -34,7 +34,7 @@
     </style>
 </head>
 <body>
-    <h1>Welcome to the Phoebe Lottie Animation Test</h1>
+    <p>Animated lottie file with SVG filter</p>
     
     <svg class="svg-wrapper">
         <defs>
@@ -73,6 +73,7 @@
             </foreignObject>
         </g>
     </svg>  
+    <p> Testing with static not animated svg </p>
     <svg class="svg-wrapper">
         <g>
             <foreignObject width="800" height="800">
@@ -80,15 +81,6 @@
             </foreignObject>
         </g>
     </svg>
-    <svg class="svg-wrapper">
-        <g>
-            <foreignObject width="800" height="800">
-                <div id="lottie-container-3"></div>
-            </foreignObject>
-        </g>
-    </svg>
-
-    <p>This is a simple HTML page.</p>
 
     <script>
         // Load the Lottie animation
@@ -97,7 +89,7 @@
             renderer: 'svg',
             loop: true,
             autoplay: true,
-            path: 'anim3.json'
+            path: 'anim4.json'
         });
 
         lottie.loadAnimation({
