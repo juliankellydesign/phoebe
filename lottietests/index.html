@@ -25,7 +25,7 @@
         }
 
         .svg-wrapper svg{
-            filter: url(#displacementFilter);
+            filter: url(#fractalNoiseFilter);
         }
         #flowerstroke {
             stroke-dasharray: 10;
@@ -50,6 +50,21 @@
                     xChannelSelector="R"
                     yChannelSelector="G" />
             </filter>
+            <filter id="fractalNoiseFilter">
+                <feTurbulence 
+                    type="fractalNoise" 
+                    baseFrequency="0.013888888992369175 0.013888888992369175" 
+                    numOctaves="3" 
+                    seed="9232"
+                    result="turbulence"/>
+                <feDisplacementMap 
+                    in2="turbulence"
+                    in="SourceGraphic"
+                    scale="8" 
+                    xChannelSelector="R" 
+                    yChannelSelector="G" />
+            </filter>
+                
         </defs>
         <g>
             <foreignObject width="800" height="800">
