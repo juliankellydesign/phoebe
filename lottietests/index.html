@@ -16,16 +16,16 @@
             font-family: Arial, sans-serif;
         }
         #lottie-container {
-            width: 808px;
-            height: 612px;
+            width: 840px;
+            height: 600px;
         }
         .svg-wrapper {
-            width: 808px;
-            height: 612px;
+            width: 840px;
+            height: 600px;
         }
 
         .svg-wrapper svg {
-            filter: url(#fractalNoiseFilter);
+            /* filter: url(#fractalNoiseFilter); */
             will-change: transform;
         }
     </style>
@@ -58,7 +58,7 @@
                 <feDisplacementMap 
                     in2="turbulence"
                     in="SourceGraphic"
-                    scale="10" 
+                    scale="5" 
                     xChannelSelector="R" 
                     yChannelSelector="G" />
             </filter>
@@ -71,13 +71,7 @@
         </g>
     </svg>  
     <p> Testing with static not animated svg </p>
-    <svg class="svg-wrapper">
-        <g>
-            <foreignObject width="800" height="800">
-                <div id="lottie-container-2"></div>
-            </foreignObject>
-        </g>
-    </svg>
+
 
     <script>
         // Load the Lottie animation
@@ -86,23 +80,7 @@
             renderer: 'svg',
             loop: true,
             autoplay: true,
-            path: 'anim5.json'
-        });
-
-        lottie.loadAnimation({
-            container: document.getElementById('lottie-container-2'),
-            renderer: 'svg',
-            loop: true,
-            autoplay: false,
-            path: 'anim.json'
-        });
-
-        lottie.loadAnimation({
-            container: document.getElementById('lottie-container-3'),
-            renderer: 'svg',
-            loop: true,
-            autoplay: false,
-            path: 'anim.json'
+            path: 'before-after-phoebe.json'
         });
     </script>
 </body>
