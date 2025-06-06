@@ -12,10 +12,15 @@
             align-items: center;
             justify-content: center;
             min-height: 100vh;
+            min-width: 840px;
             margin: 0;
             font-family: Arial, sans-serif;
         }
         #lottie-container {
+            width: 840px;
+            height: 600px;
+        }
+        #lottie-container2 {
             width: 840px;
             height: 600px;
         }
@@ -58,7 +63,7 @@
                 <feDisplacementMap 
                     in2="turbulence"
                     in="SourceGraphic"
-                    scale="5" 
+                    scale="10" 
                     xChannelSelector="R" 
                     yChannelSelector="G" />
             </filter>
@@ -69,7 +74,15 @@
                 <div id="lottie-container"></div>
             </foreignObject>
         </g>
+        
     </svg>  
+    <svg class="svg-wrapper">
+        <g>
+            <foreignObject width="800" height="800">
+                <div id="lottie-container2"></div>
+            </foreignObject>
+        </g>
+    </svg>
     <p> Testing with static not animated svg </p>
 
 
@@ -77,6 +90,13 @@
         // Load the Lottie animation
         lottie.loadAnimation({
             container: document.getElementById('lottie-container'),
+            renderer: 'svg',
+            loop: true,
+            autoplay: true,
+            path: 'anim5.json'
+        });
+        lottie.loadAnimation({
+            container: document.getElementById('lottie-container2'),
             renderer: 'svg',
             loop: true,
             autoplay: true,
