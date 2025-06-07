@@ -109,20 +109,41 @@
             autoplay: true,
             path: 'phoebe-hero-baked.json'
         });
-        lottie.loadAnimation({
+
+        // Before Phoebe animation with intro and loop
+        const beforeAnimation = lottie.loadAnimation({
             container: document.getElementById('lottie-container2'),
             renderer: 'svg',
-            loop: true,
+            loop: false,
             autoplay: true,
             path: 'before-phoebe.json'
         });
-        lottie.loadAnimation({
+
+        // After Phoebe animation with intro and loop
+        const afterAnimation = lottie.loadAnimation({
             container: document.getElementById('lottie-container3'),
             renderer: 'svg',
-            loop: true,
+            loop: false,
             autoplay: true,
             path: 'after-phoebe.json'
         });
+
+        // Function to handle intro and loop sections
+        function setupIntroLoop(animation) {
+            animation.addEventListener('DOMLoaded', () => {
+                    // Play intro first
+                    animation.goToAndPlay('intro', true);
+                    
+                    // When intro finishes, start looping the loop section
+                    animation.addEventListener('complete', () => {
+                        animation.goToAndPlay('loop', true);
+                    }, { once: true }); // Only listen for the first complete event
+            });
+        }
+
+        // Setup both animations
+        setupIntroLoop(beforeAnimation);
+        setupIntroLoop(afterAnimation);
     </script>
 </body>
 </html>
