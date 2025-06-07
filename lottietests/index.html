@@ -21,12 +21,19 @@
             height: 600px;
         }
         #lottie-container2 {
-            width: 840px;
+            width: 600px;
             height: 600px;
+            background-color: #FAFAF8;
+        }
+        #lottie-container3 {
+            width: 600px;
+            height: 600px;
+            background-color: #FAFAF8;
         }
         .svg-wrapper {
             width: 840px;
             height: 600px;
+            margin-bottom: 50px;
         }
 
         .svg-wrapper svg {
@@ -83,6 +90,13 @@
             </foreignObject>
         </g>
     </svg>
+    <svg class="svg-wrapper">
+        <g>
+            <foreignObject width="800" height="800">
+                <div id="lottie-container3"></div>
+            </foreignObject>
+        </g>
+    </svg>
     <p> Testing with static not animated svg </p>
 
 
@@ -93,14 +107,21 @@
             renderer: 'svg',
             loop: true,
             autoplay: true,
-            path: 'anim5.json'
+            path: 'phoebe-hero-baked.json'
         });
         lottie.loadAnimation({
             container: document.getElementById('lottie-container2'),
             renderer: 'svg',
             loop: true,
             autoplay: true,
-            path: 'before-after-phoebe.json'
+            path: 'before-phoebe.json'
+        });
+        lottie.loadAnimation({
+            container: document.getElementById('lottie-container3'),
+            renderer: 'svg',
+            loop: true,
+            autoplay: true,
+            path: 'after-phoebe.json'
         });
     </script>
 </body>
