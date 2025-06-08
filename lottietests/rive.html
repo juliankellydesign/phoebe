@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phoebe Rive Test</title>
+    <script src="https://unpkg.com/@rive-app/canvas@2.7.0"></script>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            min-width: 840px;
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+        #rive-container {
+            width: 840px;
+            height: 600px;
+        }
+        #rive-container2 {
+            width: 600px;
+            height: 600px;
+            background-color: #FAFAF8;
+        }
+        #rive-container3 {
+            width: 600px;
+            height: 600px;
+            background-color: #FAFAF8;
+        }
+        .svg-wrapper {
+            width: 840px;
+            height: 600px;
+            margin-bottom: 50px;
+        }
+
+        .svg-wrapper svg {
+            will-change: transform;
+        }
+    </style>
+</head>
+<body>
+    <p>Animated Rive file</p>
+    <div id="hero-container">
+        <canvas id="rive-container"></canvas>
+    </div>
+    <div id="before-after-container">
+        <canvas id="rive-container2"></canvas>
+        <canvas id="rive-container3"></canvas>
+    </div>
+
+    <script>
+        // Function to set up canvas with proper resolution
+        function setupCanvas(canvas) {
+            const dpr = window.devicePixelRatio || 1;
+            canvas.width = canvas.offsetWidth * dpr;
+            canvas.height = canvas.offsetHeight * dpr;
+            canvas.style.width = canvas.offsetWidth + 'px';
+            canvas.style.height = canvas.offsetHeight + 'px';
+        }
+        
+        // Set up all canvases
+        const canvases = [
+            document.getElementById('rive-container'),
+            document.getElementById('rive-container2'),
+            document.getElementById('rive-container3')
+        ];
+        
+        canvases.forEach(setupCanvas);
+        
+        // Handle window resize
+        window.addEventListener('resize', () => {
+            canvases.forEach(setupCanvas);
+        });
+
+        // Load the Rive animations
+        const heroAnimation = new rive.Rive({
+            src: 'phoebe-hero-baked.riv',
+            canvas: canvases[0],
+            autoplay: true,
+            onLoad: () => {
+                console.log('Hero Rive animation loaded');
+            }
+        });
+
+        const beforeAnimation = new rive.Rive({
+            src: 'before-phoebe.riv',
+            canvas: canvases[1],
+            autoplay: true,
+            onLoad: () => {
+                console.log('Before Rive animation loaded');
+            }
+        });
+
+        const afterAnimation = new rive.Rive({
+            src: 'after-phoebe.riv',
+            canvas: canvases[2],
+            autoplay: true,
+            onLoad: () => {
+                console.log('After Rive animation loaded');
+            }
+        });
+    </script>
+</body>
+</html> 
