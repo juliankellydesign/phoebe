@@ -77,7 +77,7 @@
 
         // Load the Rive animations
         const heroAnimation = new rive.Rive({
-            src: 'phoebe-hero-baked.riv',
+            src: 'phoebe-hero-baked.riv?v=' + Date.now(),
             canvas: canvases[0],
             autoplay: true,
             onLoad: () => {
@@ -86,7 +86,7 @@
         });
 
         const beforeAnimation = new rive.Rive({
-            src: 'before-phoebe.riv',
+            src: 'before-phoebe.riv?v=' + Date.now(),
             canvas: canvases[1],
             autoplay: true,
             onLoad: () => {
@@ -95,7 +95,7 @@
         });
 
         const afterAnimation = new rive.Rive({
-            src: 'after-phoebe.riv',
+            src: 'after-phoebe.riv?v=' + Date.now(),
             canvas: canvases[2],
             autoplay: true,
             onLoad: () => {
