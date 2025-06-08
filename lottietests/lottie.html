@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phoebe Lottie Test</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.12.2/lottie.min.js"></script>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            min-width: 840px;
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+        #lottie-container {
+            width: 840px;
+            height: 600px;
+        }
+        #lottie-container2 {
+            width: 600px;
+            height: 600px;
+            background-color: #FAFAF8;
+        }
+        #lottie-container3 {
+            width: 600px;
+            height: 600px;
+            background-color: #FAFAF8;
+        }
+        .svg-wrapper {
+            width: 840px;
+            height: 600px;
+            margin-bottom: 50px;
+        }
+
+        .svg-wrapper svg {
+            /* filter: url(#fractalNoiseFilter); */
+            will-change: transform;
+        }
+    </style>
+</head>
+<body>
+    <p>Animated lottie file with SVG filter</p>
+    
+    <svg class="svg-wrapper">
+        <defs>
+            <!-- <filter id="displacementFilter">
+                <feTurbulence
+                    type="turbulence"
+                    baseFrequency="0.01"
+                    numOctaves="1"
+                    result="turbulence" />
+                <feDisplacementMap
+                    in2="turbulence"
+                    in="SourceGraphic"
+                    scale="5"
+                    xChannelSelector="R"
+                    yChannelSelector="G" />
+            </filter> -->
+            <filter id="fractalNoiseFilter">
+                <feTurbulence 
+                    type="fractalNoise" 
+                    baseFrequency="0.014 0.014" 
+                    numOctaves="3" 
+                    seed="9232"
+                    result="turbulence"/>
+                <feDisplacementMap 
+                    in2="turbulence"
+                    in="SourceGraphic"
+                    scale="10" 
+                    xChannelSelector="R" 
+                    yChannelSelector="G" />
+            </filter>
+                
+        </defs>
+        <g>
+            <foreignObject width="800" height="800">
+                <div id="lottie-container"></div>
+            </foreignObject>
+        </g>
+        
+    </svg>  
+    <svg class="svg-wrapper">
+        <g>
+            <foreignObject width="800" height="800">
+                <div id="lottie-container2"></div>
+            </foreignObject>
+        </g>
+    </svg>
+    <svg class="svg-wrapper">
+        <g>
+            <foreignObject width="800" height="800">
+                <div id="lottie-container3"></div>
+            </foreignObject>
+        </g>
+    </svg>
+    <p> Testing with static not animated svg </p>
+
+
+    <script>
+        // Load the Lottie animation
+        lottie.loadAnimation({
+            container: document.getElementById('lottie-container'),
+            renderer: 'svg',
+            loop: true,
+            autoplay: true,
+            path: 'phoebe-hero-baked.json'
+        });
+
+        // Before Phoebe animation with intro and loop
+        const beforeAnimation = lottie.loadAnimation({
+            container: document.getElementById('lottie-container2'),
+            renderer: 'svg',
+            loop: false,
+            autoplay: true,
+            path: 'before-phoebe.json'
+        });
+
+        // After Phoebe animation with intro and loop
+        const afterAnimation = lottie.loadAnimation({
+            container: document.getElementById('lottie-container3'),
+            renderer: 'svg',
+            loop: false,
+            autoplay: true,
+            path: 'after-phoebe.json'
+        });
+
+        // Function to handle intro and loop sections
+        function setupIntroLoop(animation) {
+            animation.addEventListener('DOMLoaded', () => {
+                    // Play intro first
+                    animation.goToAndPlay('intro', true);
+                    
+                    // When intro finishes, start looping the loop section
+                    animation.addEventListener('complete', () => {
+                        animation.goToAndPlay('loop', true);
+                    }, { once: true }); // Only listen for the first complete event
+            });
+        }
+
+        // Setup both animations
+        setupIntroLoop(beforeAnimation);
+        setupIntroLoop(afterAnimation);
+    </script>
+</body>
+</html>
